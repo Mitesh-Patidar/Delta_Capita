@@ -39,7 +39,7 @@ pipeline {
         withCredentials([file(credentialsId: 'KUBECONFIG', variable: 'KUBECONFIG_FILE')]) {
           sh '''
             export KUBECONFIG=$KUBECONFIG_FILE
-            kubectl -n $NAMESPACE set image deployment/clients-api clients-api=$IMAGE --record || kubectl -n $NAMESPACE apply -f k8s/
+            kubectl -n $NAMESPACE set image deployment/clientapi clientapi=$IMAGE --record || kubectl -n $NAMESPACE apply -f kubernetes_yamls/
           '''
         }
       }
